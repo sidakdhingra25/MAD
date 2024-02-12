@@ -1,6 +1,5 @@
 import 'dart:io';
 
-// Logger Mixin
 mixin Logger {
   void logDebug(String message) {
     print('DEBUG: $message');
@@ -19,7 +18,6 @@ mixin Logger {
   }
 }
 
-// Base Character class
 class Character {
   String name;
   int health;
@@ -31,7 +29,6 @@ class Character {
   }
 }
 
-// Warrior class
 class Warrior extends Character with Logger {
   int attackDamage;
 
@@ -42,7 +39,6 @@ class Warrior extends Character with Logger {
   }
 }
 
-// Mage class
 class Mage extends Character with Logger {
   int spellPower;
 
@@ -53,7 +49,6 @@ class Mage extends Character with Logger {
   }
 }
 
-// Rogue class
 class Rogue extends Character with Logger {
   int agility;
 
@@ -65,11 +60,9 @@ class Rogue extends Character with Logger {
 }
 
 void main() {
-  // User input
   print('Choose your character class (Warrior, Mage, Rogue):');
   String selectedClass = stdin.readLineSync() ?? '';
 
-  // Creating a character based on user input
   Character playerCharacter;
   switch (selectedClass.toLowerCase()) {
     case 'warrior':
@@ -86,7 +79,6 @@ void main() {
       return;
   }
 
-  // Performing class-specific actions
   if (playerCharacter is Warrior) {
     Warrior warrior = playerCharacter as Warrior;
     warrior.performAttack();
@@ -98,6 +90,5 @@ void main() {
     rogue.performStealthAttack();
   }
 
-  // Showing character information
   playerCharacter.showInfo();
 }
